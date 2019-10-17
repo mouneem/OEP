@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="ui vertical stripe segment inverted" style="padding-top: 6em;padding-bottom: 6em; margin: 0 0 4em 0em;">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="six wide right  column">
+                    <img src={{ asset('img/i1.png') }} class="ui large image">
+                </div>
+                <div class="eight wide column ui form inverted">
+                    {{ form_start(registrationForm) }}
+                        <h1 class="h3 mb-3 font-weight-normal">Create an account</h1>
+                        <div class="field">
+                            <small>{{ form_help(registrationForm.email) }}</small>
+                            {% if form_errors(registrationForm.email) %}
+                                <div class="ui error inverted  visible message">
+                                    {{ form_errors(registrationForm.email) }}
+                                </div>
+                            {% endif %}
+                            <label>Email</label>
+                            {{ form_widget(registrationForm.email) }}
+                        </div>
+                        <div class="field">
+                            <small>{{ form_help(registrationForm.plainPassword)}}</small>
+                            <label>Password</label>
+                            {{ form_widget(registrationForm.plainPassword) }}
+                        </div>
+                        {% if form_errors(registrationForm.plainPassword) %}
+                            <div class="ui error inverted  visible message">
+                                {{ form_errors(registrationForm.plainPassword) }}
+                            </div>
+                        {% endif %}
+                        <div class="inline field inverted">
+                            <div class="ui checkbox">
+                            </div>
+                        </div>
+                        <div class="inline field">
+                            <div class="ui  checkbox">
+                                {{ form_widget(registrationForm.agreeTerms) }}
+                                <label class=" white">I agree on terms <a href="">(read terms)</a> </label>
+                            </div>
+                        </div>
+                        <input type="submit" class="ui submit button" value="Sign in">
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

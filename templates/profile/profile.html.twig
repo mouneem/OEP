@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <div class="ui vertical stripe segment inverted" style="padding-top: 6em;padding-bottom: 6em; margin: 0 0 4em 0em;">
+        <div class="ui middle aligned stackable grid container">
+            {% if isUpdated  %}
+                <div class="container ui inverted ">
+                    <div class="ui positive fluid message">
+                        <div class="header">
+                            Profile Updated
+                        </div>
+                        <p>You can continue editing your profile or you can go back to the <a href="/">Home</a> page.</p>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row  ui inverted ">
+                <div class="four wide  segment right centered column">
+                    <div class="segment">
+                        <form action="" class="ui center aligned">
+                            <a href="#">
+                                <img src={{ asset('data/profiles/imgs/default.png') }} class="ui bordered fluid image">
+                            </a>
+                            <a type="submit" class="ui bottom attached button inverted blue" tabindex="0">Change image</a>
+                        </form>
+                    </div>
+                    <hr>
+                    <div class="segment inverted">
+                        <h4 class=" dividing header">Accounts and Social Media</h4>
+                        <form class="form ui inverted" action="/accounts/update" method="post">
+                            <div class="field  ">
+                                <label>Website </label>
+                                <div class="mini input ui">
+                                    <input class="" type="text" name="Website" value="{{ user_profile.Website }}">
+                                </div>
+                                <label>Orcid </label>
+                                <div class="mini input ui">
+                                    <input class="" type="text" name="Orcid" value="{{ user_profile.Orcid }}">
+                                </div>
+                                <label>Twitter </label>
+                                <div class="mini input ui">
+                                    <input class="" type="text" name="Twitter" value="{{ user_profile.Twitter }}">
+                                </div>
+                                <label>LinkedIn </label>
+                                <div class="mini input ui">
+                                    <input class="" type="text" name="LinkedIn" value="{{ user_profile.LinkedIn }}">
+                                </div>
+                                <label>Facebook </label>
+                                <div class="mini input ui">
+                                    <input class="" type="text" name="Facebook" value="{{ user_profile.Facebook }}">
+                                </div>
+                                <label>Instagram </label>
+                                <div class="mini input ui">
+                                    <input class="" type="text" name="Instagram" value="{{ user_profile.Instagram }}">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <input type="submit" class="ui bottom inverted attached button blue" tabindex="0" value="Save change">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="ten wide column">
+                    <div class="ui center container">
+                        <h1 class="ui centered inverted header">
+                            Profile information
+                        </h1>
+                        <div style="margin-bottom: 2em"> &ensp; </div>
+                    </div>
+                    <form class="ui form inverted" method="post" action="/profile/update">
+                        <div class="field">
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>First name</label>
+                                    <input type="text" name="firstname" value="{{ user_profile.firstname }}" placeholder="First Name">
+                                </div>
+                                <div class="field">
+                                    <label>Last Name</label>
+                                    <input type="text" name="secondname" value="{{ user_profile.secondname }}" placeholder="Last Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Gender</label>
+                            <select name="gender" class="ui fluid dropdown">
+                                <option value="{{ user_profile.gender }}"  selected>{{ user_profile.gender }}</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Email </label>
+                            <input type="text" disabled name="email" value="{{ user_profile.user.email }}">
+                        </div>
+                        <div class="field">
+                            <label>Occupation </label>
+                            <input type="text" name="occupation" value="{{ user_profile.occupation }}">
+                        </div>
+                        <div class="field">
+                            <label>Affiliation </label>
+                            <input type="text" name="affiliation" value="{{ user_profile.affiliation }}">
+                        </div>
+                        <div class="field">
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Country</label>
+                                    <select name="country" class="ui fluid dropdown">
+                                        <option value="{{ user_profile.country }}" selected>{{ user_profile.country }}</option>
+                                        <option value="Angola">Angola</option>
+                                        <option value="Algeria">Algeria</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label>City / State </label>
+                                    <input type="text"name="city" value="{{ user_profile.city }}">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <input type="submit" class="ui bottom inverted attached button blue" tabindex="0" value="Save change">
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

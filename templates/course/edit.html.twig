@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Create new Course/Workshop {% endblock %}
+
+{% block body %}
+    <div class="ui vertical stripe segment " style="padding-top: 6em;padding-bottom: 6em; margin: 0 0 4em 0em;">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="four wide right  column">
+                    <img src={{ asset('img/i1.png') }} class="ui large image">
+                </div>
+                <div class="twelve wide column">
+                    <h1 class="h3 mb-3 font-weight-normal">Create new Course/Workshop</h1>
+                    {% if not app.user %}
+                    <div class="ui warning message">
+                        <div class="header">
+                            You must register or login before you can do that!
+                        </div>
+                        <ul>
+                            <li>
+                                Go to <a href="/register"> registration page </a>, then try again.
+                            </li>
+                            <li>
+                                Alredy have an acount ? You can <a href="/login"> login </a> to get access.
+                            </li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <form class="ui form" method="post" action="/course/update">
+                        <div class="field">
+                            <label>Course Title</label>
+                            <input type="text" name="Title" value="{{ Course.Title }}" >
+                            <input type="hidden" name="CourseId" value="{{ Course.Id }}" >
+                        </div>
+                        <div class="field">
+                            <label>Category</label>
+                            <select name="Category" class="ui fluid dropdown">
+                                <option value="{{ Course.Category }} selected">{{ Course.Category }}</option>
+                                <option value="Science">Science</option>
+                                <option value="Literature">Literature</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Medicine">Medicine</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Description</label>
+                            <textarea name="Description" rows="2">{{ Course.description }}</textarea>
+                        </div>
+
+                        <div class="field">
+                            <label>Workshop/Course Location</label>
+                            <input type="text" name="Location" value="{{ Course.courseLocation }}" >
+                        </div>
+
+                        <div class="field">
+                            <label>This course/workshop is :</label>
+                            <select name="isVisible" class="ui fluid dropdown">
+                                <option value="1">Public: Visible for everyone</option>
+                                <option value="2">Private: Visible only for persone who have the link</option>
+                            </select>
+                        </div>
+                        <div class="container" style="text-align: center">
+                            <button class="ui button blue inverted" style="width: 100%" type="submit">Create course</button>
+                        </div>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="ui vertical stripe segment inverted" style="padding-top: 6em;padding-bottom: 6em; margin: 0 0 4em 0em;">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="six wide right  column">
+                    <img src={{ asset('img/i1.png') }} class="ui large image">
+                </div>
+                <div class="eight wide column">
+                    <h3 class="ui header blue"> Open Education Platform </h3>
+                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda debitis dignissimos dolorem ducimus est eveniet harum impedit laboriosam laudantium necessitatibus nemo odio quam quod rerum, saepe vel veritatis vero?  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('build/js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/runtime.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/vendors~js/app.js/app.js') }}"></script>
+{% endblock %}

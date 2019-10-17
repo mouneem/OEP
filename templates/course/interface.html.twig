@@ -1,0 +1,200 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} OEP - {{ Course.title }} {% endblock %}
+
+
+{% block body %}
+<style>
+    html, body {
+        height: 100%;
+    }
+
+    .ui.grid {
+        height: 100%;
+    }
+</style>
+
+<div class="ui mh100">
+    <div class="ui grid ">
+        <div class="row">
+            <div class="four wide right black inverted inverted ui column p3">
+                <div class="mt3">
+                    <form action="/help" method="post">
+                        <input type="hidden" value="{{ Course.link }}" name="link" id="">
+                        {% if app.user.id in Course.getHelpsStudentsIds %}
+                            <button type="submit" class="positive ui button mini fluid">Claim Problem solved </button>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.     </p>
+                        {% else %}
+                            <button type="submit" class="negative ui button mini fluid"> Claim help </button>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.     </p>
+                        {% endif %}
+                    </form>
+
+                    <div class="mt3 empty"></div>
+                    <div class="containair" style="text-align: center">
+                        <h3><span href="#">List of Student</span></h3>
+                    </div>
+                    <hr>
+                    <div class="ui grid">
+                        {% for student in Course.Students %}
+                            <div class="row ">
+                                <div class="twelve wide column">
+                                    {% if student.getTimeDiff() < 15 %}
+                                        <a class="ui green empty circular label"></a>
+                                    {% elseif student.getTimeDiff() < 60 %}
+                                        <span class="small-text">
+                                          {{ student.getTimeDiff() }} min ago
+                                        </span>
+                                    {% else %}
+                                        <a class="ui red empty circular label"></a>
+                                    {% endif %}
+                                    &ensp;
+                                    <a class="white-text"
+                                       href="/u/{{ student.Username }}">{{ student.Username }}</a>
+                                </div>
+                                {% if student.Id in Course.getHelpsStudentsIds %}
+                                    <div class="three wide column right aligned">
+                                        <a class="ui red mini label">P</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+                <div class="mt3">
+                    <div class="containair" style="text-align: center">
+                        <h3><span href="#">List of Instructor/Trainer</span></h3>
+                    </div>
+                    <hr>
+                    <div class="ui grid">
+                        <div class="row">
+                            <div class="ten wide column">
+                                <a class="white-text"
+                                   href="/u/{{ Course.CreatedBy.Username }}">{{ Course.CreatedBy.Username }}</a>
+                            </div>
+                            <div class="five wide column right aligned"><a class="ui blue mini label">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="eleven wide column ui mh100 p2">
+                <div class="container center aligned text-center">
+                    <h3 class="h3 font-weight-normal centered text-center">Course/Workshop: <span
+                                class="color-blue">{{ Course.title }}</span>
+                </div>
+                <div class="mt2">
+                    <h4>Created :{{ Course.CreatedOn |date("m/d/Y") }} </h4>
+                    <h4>Number of Student enrolled : {{ Course.Students | length }} </h4>
+                    <h4>Number of Instructor/Trainer : {{ Course.managedBy | length }} </h4>
+                    <h4>Description:</h4>
+                    <p>
+                        {{ Course.description }}
+                    </p>
+                </div>
+                <div class="mt2">
+                    <div class="ui grid">
+                        <div class="row">
+                            <div class="eight wide  column">
+                                <div class="ui blue segment">
+                                    <h3 class="color-blue ">Joint files</h3>
+                                    {% if Course.jointFiles | length < 1 %}
+                                        <div class="ui bottom attached warning message">
+                                            <i class="warning icon"></i>
+                                            No file joint !
+                                        </div>
+                                    {% else %}
+                                        {% for i in 1.. Course.jointFiles | length %}
+                                            <a target="_blank" class="ui  fluid image label" style="margin-bottom: 1em"
+                                               href="/download/{{ Course.jointFiles[i-1].id }}">
+                                                {{ Course.jointFiles[i-1].title }}
+                                                ({{ Course.jointFiles[i-1].downloadCount }})
+                                            </a>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <div>
+                                        <a type="submit" class="ui button tiny blue basic"
+                                           style="width: 100%;" onclick="f()">Add file</a>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function f() {
+                                        var c = document.getElementById('modal_file');
+                                        $(c)
+                                            .modal('show')
+                                        ;
+                                    }
+
+                                    function g() {
+                                        var c = document.getElementById('modal_file');
+                                        $(c)
+                                            .modal('hide')
+                                        ;
+                                    }
+                                </script>
+                                <div class="ui modal" id="modal_file">
+                                    <i class="close icon"></i>
+                                    <div class="header">
+                                        Add new file
+                                    </div>
+                                    <div class="content">
+                                        <div class="ui form">
+                                            {{ form_start(form, {'method': 'POST', 'action': '/upload'}) }}
+                                            <div class="field">
+                                                <label for="">{{ form_label(form.Title) }}</label>
+                                                {{ form_widget(form.Title) }}
+                                            </div>
+                                            <input type="hidden" name="link" value="{{ Course.link }}" id="">
+                                            <div class="field">
+                                                <label for="">{{ form_label(form.file) }}</label>
+                                                {{ form_widget(form.file) }}
+                                            </div>
+                                            <input type="submit" value="add">
+                                            {{ form_end(form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="eight wide column">
+                                <div class="ui blue segment">
+                                    <h3 class="color-blue ">Live Pad</h3>
+                                    <form action="/pad" method="post">
+                                        <div class="ui form">
+                                            <input type="hidden" name="link" value="{{ Course.link }}" id="">
+                                            <div class="field">
+                                                <label>Text</label>
+                                                <textarea name="content">{{ Course.pad.content }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="ui button tiny blue basic"
+                                                    style="width: 100%;">Update
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+    </script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js">
+    </script>
+
+
+    {% endblock %}
+

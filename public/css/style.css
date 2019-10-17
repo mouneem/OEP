@@ -1,0 +1,66 @@
+.text-center{
+    text-align: center !important;
+}
+.p1{
+    padding: 1em !important;
+}
+.p2{
+    padding: 2em !important;
+}
+.p3{
+    padding: 3em !important;
+}
+.p4{
+    padding: 4em !important;
+}
+.p5{
+    padding: 5em !important;
+}
+
+.inverted > ul > li > a{
+    color:#FFFFFF;
+}
+
+.white-text{ color: #FFFFFF;}
+.white-text:hover{ color: #FFFFFF;}
+
+.mt3{
+    margin-top: 3em;
+}
+.mt2{
+    margin-top: 2em;
+}
+.mb2{
+    margin-bottom:  2em;
+}
+.mh100{
+    height: 100% !important;
+}
+body {
+    height: 100%;
+}
+
+
+.ui.grid {
+    min-height: 100%;
+}
+.color-white{
+    color: #F5F5F5;
+}
+.color-blue{
+    color: #0d71bb;
+}
+.color-bg-blue{
+    background: #0d71bb;
+}
+.large-text {
+    font-size: 2em;
+}
+
+.small-text {
+    font-size: 0.8em;
+}
+
+.tiny-text {
+    font-size: 0.5em;
+}

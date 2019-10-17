@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Create new Course/Workshop {% endblock %}
+
+{% block body %}
+    <div class="ui vertical stripe segment " style="padding-top: 6em;padding-bottom: 6em; margin: 0 0 4em 0em;">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="two wide right  column">
+                    <img src={{ asset('img/i1.png') }} class="ui large image">
+                </div>
+                <div class="twelve wide column">
+                    <h1 class="h3 mb-3 font-weight-normal">List of Courses</h1>
+                    {% if CreatedCourses | length + EnrolledCourses | length < 1 %}
+                        <div class="ui warning message">
+                            <div class="header">
+                                Your name does not appear in any course online !
+                            </div>
+                            <ul>
+                                <li>
+                                    You can create a new course from <a href="/course/create"> here </a>
+                                </li>
+                                <li>
+                                    Or you can join an existing course by typing course id <a href="/course/create">
+                                        here </a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="container">
+                            <table class="ui celled striped table">
+                                <thead>
+                                <tr>
+                                    <th class="collapsing">
+                                        State
+                                    </th>
+                                    <th>
+                                        Title
+                                    </th>
+                                    <th class=" aligned collapsing">
+                                        Created on
+                                    </th>
+                                    <th class=" aligned collapsing">
+                                        Students
+                                    </th>
+                                    <th class="right aligned collapsing">
+                                        Action
+                                    </th>
+                                </tr>
+
+                                {% if CreatedCourses | length == 0 %}
+                                    <tr>
+                                        <td class="collapsing center " colspan="6">
+                                            No course created
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <th class="collapsing center " colspan="6">
+                                            List of course Created
+                                        </th>
+                                    </tr>
+                                {% endif %}
+                                </thead>
+                                <tbody>
+                                {% for course in CreatedCourses %}
+                                    <tr>
+                                        <td class="collapsing">
+                                            {% if course.isVisible %}
+                                                <a href="#" class="ui button green mini">Visible</a>
+                                            {% else %}
+                                                <a href="#" class="ui button orange mini">Hidden</a>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="c/{{ course.link }}">{{ course.Title }}</a>
+                                        </td>
+                                        <td class=" aligned collapsing">
+                                            {{ course.CreatedOn |date("m/d/Y") }}
+                                        </td>
+                                        <td class=" aligned collapsing">
+                                            {{ course.Students | length }}
+                                        </td>
+                                        <td class="right aligned collapsing">
+                                            {% if  course.isVisible == 1 %}
+                                                <a href="/hide/course/{{ course.id }}"
+                                                   class="mini ui button orange inverted">
+                                                    Hide
+                                                </a>
+                                            {% else %}
+                                                <a href="/hide/course/{{ course.id }}"
+                                                   class="mini ui button green inverted">
+                                                    Show
+                                                </a>
+                                            {% endif %}
+                                            <a href="/course/edit/{{ course.link }}"
+                                               class="mini ui button blue inverted">
+                                                Edit
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                <thead>
+                                {% if EnrolledCourses | length == 0 %}
+                                    <tr>
+                                        <td class="collapsing center " colspan="6">
+                                            No course followed
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <th class="collapsing center " colspan="6">
+                                            List of course followed
+                                        </th>
+                                    </tr>
+                                {% endif %}
+                                </thead>
+                                {% for CoursesAsStudent in EnrolledCourses %}
+                                    {% if  CoursesAsStudent.isVisible == 1 %}
+                                    <tr>
+                                        <td class="collapsing">
+                                            {% if CoursesAsStudent.isVisible %}
+                                                <a href="#" class="ui button green mini">Visible</a>
+                                            {% else %}
+                                                <a href="#" class="ui button orange mini">Hidden</a>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="c/{{ CoursesAsStudent.link }}">{{ CoursesAsStudent.Title }}</a>
+                                        </td>
+                                        <td class=" aligned collapsing">
+                                            {{ CoursesAsStudent.CreatedOn |date("m/d/Y") }}
+                                        </td>
+                                        <td class=" aligned collapsing">
+                                            {{ CoursesAsStudent.Students | length }}
+                                        </td>
+                                        <td class="right aligned collapsing">
+                                            <a href="/c/{{ CoursesAsStudent.link }}"
+                                               class="mini ui button blue inverted">
+                                                Go
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

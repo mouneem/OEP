@@ -1,0 +1,329 @@
+
+************ PS5.fna ************
+F0F1  1
+type  1
+gluta 0
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ ATCC 19867 ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ PierC1.fna ************
+F0F1  1
+type  1
+gluta 0
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ CSM2.fna ************
+F0F1  1
+type  0
+gluta 1
+bifun 0
+NADH- 2
+phosp 1
+recom 0
+************ D5_25A.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 0
+NADH- 1
+phosp 1
+recom 0
+************ AA1.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ SJTL3.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 0
+************ JV3.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 0
+************ F2.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ XH.SM.1.fn ************
+F0F1  1
+type  1
+gluta 0
+bifun 0
+NADH- 1
+phosp 1
+recom 1
+************ EP5.fna ************
+F0F1  1
+type  1
+gluta 0
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ HPCN19.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 0
+************ B418.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 0
+************ SAM8.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ 5BA-I-2.fn ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ RR-10.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ DF07.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 0
+NADH- 1
+phosp 1
+recom 1
+************ BurE1.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ SB275.fna ************
+F0F1  0
+type  1
+gluta 1
+bifun 0
+NADH- 1
+phosp 1
+recom 0
+************ SeITE02.fn ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ JCM 9942.f ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ DT1.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 0
+************ EA1.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ EP20.fna ************
+F0F1  1
+type  1
+gluta 0
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ ea21.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ NS26.fna ************
+F0F1  0
+type  1
+gluta 0
+bifun 0
+NADH- 1
+phosp 1
+recom 0
+************ BurA1.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ W18.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 0
+NADH- 1
+phosp 1
+recom 1
+************ SJTH1.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 0
+NADH- 1
+phosp 1
+recom 1
+************ MF89.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ EA63.fna ************
+F0F1  1
+type  1
+gluta 0
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ AB550.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 0
+************ PML168.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ OUC_Est10. ************
+F0F1  0
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ SVIA2.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 2
+phosp 1
+recom 1
+************ EP13.fna ************
+F0F1  0
+type  1
+gluta 0
+bifun 0
+NADH- 1
+phosp 1
+recom 0
+************ ZBG7B.fna ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ MDMC339.fn ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ LMG 978.fn ************
+F0F1  1
+type  1
+gluta 1
+bifun 1
+NADH- 0
+phosp 1
+recom 1
+************ CBF10-1.fn ************
+F0F1  0
+type  1
+gluta 1
+bifun 1
+NADH- 1
+phosp 1
+recom 1
+************ EA22.fna ************
+F0F1  1
+type  1
+gluta 0
+bifun 1
+NADH- 0
+phosp 1
+recom 1

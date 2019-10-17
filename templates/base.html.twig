@@ -3,10 +3,43 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href={{ asset('css/semantic.css') }}>
+            <link rel="stylesheet" href={{ asset('css/icon.min.css') }}>
+            <link rel="stylesheet" href={{ asset('css/style.css') }}>
+        {% endblock %}
     </head>
     <body>
+    <div class="ui borderless main menu" style="">
+        <div class="ui  container">
+            <div class=" item left">
+                 <b class="blue">OEP</b> &nbsp; Open Eduction Plateform
+            </div>
+            <div class="item">
+                <a href="#" class="item">Home</a>
+                <a href="#" class="item">About-us</a>
+                <a href="#" class="item">Partners</a>
+            </div>
+            <div class="right item">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <a href="/courses" class="item ">My Courses / Workshops</a>
+
+                    <a href="/profile" class="item ">
+                        {{ app.user.username }}
+                    </a>
+                    <a href="/logout" class="item ">Logout</a>
+
+                {% else %}
+                    <a href="/register" class="item ">Register</a>
+                    <a href="/login" class="item ">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% block Content %}
+    {% endblock %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
