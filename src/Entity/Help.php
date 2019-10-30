@@ -33,14 +33,21 @@ class Help
     private $User;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $time;
+
+    /**
      * Help constructor.
      * @param $Course
      * @param $User
+     * @throws \Exception
      */
     public function __construct($Course, $User)
     {
         $this->isNeeded = False;
         $this->Course = $Course;
+        $this ->setTime(new \DateTime());
         $this->User = $User;
     }
 
@@ -81,6 +88,18 @@ class Help
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getTime(): ?\DateTimeInterface
+    {
+        return $this->time;
+    }
+
+    public function setTime(?\DateTimeInterface $time): self
+    {
+        $this->time = $time;
 
         return $this;
     }

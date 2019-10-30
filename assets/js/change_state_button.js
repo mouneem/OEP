@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Items from './Components/Items';
 
-import b1 from './Components/b1';
+import Items from './Components/b1';
 
 
 class App extends React.Component {
@@ -26,17 +26,16 @@ class App extends React.Component {
  }
 
  render() {
-console.log('reeeeee');
      return (
          <div className="row">
              {this.state.entries.map(
                  ({ id, title, body }) => (
-                     <b1
+                     <Items
                          key={id}
                          title={title}
                          body={body}
                      >
-                     </b1>
+                     </Items>
                  )
              )}
          </div>

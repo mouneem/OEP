@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Course;
+use App\Entity\Help;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,8 +42,14 @@ class PadController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $course = $this->getDoctrine()->getRepository(Course::class)->findOneBy(['link' => $link]);
         if ($course->getCreatedBy()->getId() == $user->getId() or in_array($user->getId(), (array)$course->getStudentsList())) {
-            $help = $course->getHelpsByUser($user);
-            $help->setIsNeeded(!$help->getIsNeeded());
+            $prec_help = $course->getHelpsByUser($user);
+            if ($prec_help != NULL){
+                $help = New Help($course, $user);
+                $help->setIsNeeded(!$prec_help->getIsNeeded());
+            }
+            else{
+                $help = New Help($course, $user);
+            }
             $user->setLastSeen(new DateTime());
             $em->persist($user);
             $em->persist($help);

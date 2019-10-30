@@ -394,13 +394,29 @@ class Course
 
     public function getHelpsByUser(User $user)
     {
+        $z = False;
         $hs = $this->getHelps();
         foreach ($hs as $h){
             if ($h->getUser()->getId() == $user->getId() ){
-                return $h;
+                $z = $h;
             }
         }
-        return False;
+        return $z;
+    }
+
+
+    public function getStudentSatInCourse(User $user)
+    {
+        $z = False;
+	$a = [];
+        $hs = $this->getHelps();
+        foreach ($hs as $h){
+            if ($h->getUser()->getId() == $user->getId() ){
+                $z = $h;
+		array_push($a,$z);
+            }
+        }
+        return $a;
     }
 
     public function addHelp(Help $help): self

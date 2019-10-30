@@ -21,14 +21,19 @@
                 <div class="mt3">
                     <form action="/help" method="post">
                         <input type="hidden" value="{{ Course.link }}" name="link" id="">
-                        {% if app.user.id in Course.getHelpsStudentsIds %}
-                            <button type="submit" class="positive ui button mini fluid">Claim Problem solved </button>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.     </p>
+                        {% if Course.getStudentSatInCourse(app.user) |last.isNeeded  %}
+                            <button type="submit" class="positive ui button mini fluid"> Problem solved ?</button>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
                         {% else %}
-                            <button type="submit" class="negative ui button mini fluid"> Claim help </button>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.     </p>
+                            <button type="submit" class="negative ui button mini fluid"> Need help ?</button>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
                         {% endif %}
                     </form>
+			
+
+     <div id="root"></div>
+
+
 
                     <div class="mt3 empty"></div>
                     <div class="containair" style="text-align: center">
@@ -52,10 +57,13 @@
                                     <a class="white-text"
                                        href="/u/{{ student.Username }}">{{ student.Username }}</a>
                                 </div>
-                                {% if student.Id in Course.getHelpsStudentsIds %}
+				{% if Course.getStudentSatInCourse(student) != NULL %}
+                       		{% if Course.getStudentSatInCourse(student)|last.isNeeded  %}
                                     <div class="three wide column right aligned">
                                         <a class="ui red mini label">P</a>
                                     </div>
+                                {% endif %}
+
                                 {% endif %}
                             </div>
                         {% endfor %}
@@ -194,6 +202,10 @@
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js">
     </script>
+
+    <script type="text/javascript" src="{{ asset('build/js/app.js') }}"></script>
+	<script src="{{ asset('build/runtime.js') }}"></script>
+             <script type="text/javascript" src="{{ asset('build/vendors~js/app.js') }}"></script>
 
 
     {% endblock %}
